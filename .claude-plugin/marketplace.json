@@ -1,0 +1,18 @@
+{
+  "name": "elsif",
+  "owner": {
+    "name": "fugufish",
+    "email": "fugufish@elsif.dev"
+  },
+  "metadata": {
+    "description": "Standard Claude Code configurations for elsif projects with automated quality assurance workflows",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "standard",
+      "source": "./plugins/standard",
+      "description": "Standard Claude Code configurations for elsif projects"
+    }
+  ]
+}

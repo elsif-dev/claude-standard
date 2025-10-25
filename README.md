@@ -8,17 +8,18 @@ This repository follows the Claude Code plugin structure:
 
 ```
 claude-standard/
-├── .claude-plugin/
-│   └── plugin.json          # Plugin metadata and configuration
-├── commands/                 # Custom slash commands (markdown files)
-│   └── git/
-│       └── commit.md        # /git:commit command
-├── agents/                   # Custom agent definitions
-│   ├── quality-orchestrator.md
-│   ├── claude-code-quality-runner.md
-│   └── claude-code-quality-resolver.md
-├── skills/                   # Agent Skills with SKILL.md files
-├── hooks/                    # Event handlers (hooks.json)
+├── plugins/
+│   ├── .claude-plugin/
+│   │   └── plugin.json          # Plugin metadata and configuration
+│   ├── commands/                 # Custom slash commands (markdown files)
+│   │   └── git/
+│   │       └── commit.md        # /git:commit command
+│   ├── agents/                   # Custom agent definitions
+│   │   ├── quality-orchestrator.md
+│   │   ├── claude-code-quality-runner.md
+│   │   └── claude-code-quality-resolver.md
+│   ├── skills/                   # Agent Skills with SKILL.md files
+│   └── hooks/                    # Event handlers (hooks.json)
 └── .mcp.json                # MCP server configurations
 ```
 
@@ -26,9 +27,9 @@ claude-standard/
 
 ### Commands
 
-Place markdown files in the `commands/` directory to create custom slash commands. Each file becomes a command that Claude can execute.
+Place markdown files in the `plugins/commands/` directory to create custom slash commands. Each file becomes a command that Claude can execute.
 
-#### Git Commit (`commands/git/commit.md`)
+#### Git Commit (`plugins/commands/git/commit.md`)
 
 A slash command `/git:commit` that creates git commits following best practices:
 - **Quality Checks**: Automatically invokes the quality-orchestrator before committing
@@ -40,9 +41,9 @@ The command MUST run quality checks before every commit to ensure code quality a
 
 ### Agents
 
-This plugin includes specialized subagents in the `agents/` directory:
+This plugin includes specialized subagents in the `plugins/agents/` directory:
 
-#### Quality Orchestrator (`agents/quality-orchestrator.md`)
+#### Quality Orchestrator (`plugins/agents/quality-orchestrator.md`)
 
 A generic quality orchestration agent that:
 - **Discovers** runner/resolver pairs dynamically across all working directories
@@ -56,7 +57,7 @@ Unlike directory-specific orchestrators, this agent searches for quality agents 
 
 Use it proactively before commits to ensure code quality through automated review and fix workflows.
 
-#### Claude Code Quality Runner (`agents/claude-code-quality-runner.md`)
+#### Claude Code Quality Runner (`plugins/agents/claude-code-quality-runner.md`)
 
 Reviews Claude Code configuration files for security, compliance, and best practices:
 - **Security Review**: Checks `.claude/settings.json` for dangerous permissions and overly broad tool access
@@ -65,7 +66,7 @@ Reviews Claude Code configuration files for security, compliance, and best pract
 
 Automatically invoked by the quality-orchestrator for `.claude/` configuration files. Produces structured reports without making modifications.
 
-#### Claude Code Quality Resolver (`agents/claude-code-quality-resolver.md`)
+#### Claude Code Quality Resolver (`plugins/agents/claude-code-quality-resolver.md`)
 
 Automatically fixes issues identified by the quality-runner:
 - **Security Fixes**: Restricts overly permissive tool access in settings
@@ -75,10 +76,10 @@ Automatically fixes issues identified by the quality-runner:
 Paired with the quality-runner by the orchestrator. Applies fixes automatically and reports results.
 
 ### Skills
-Create agent Skills in the `skills/` directory. Each skill should have a `SKILL.md` file that extends Claude's capabilities.
+Create agent Skills in the `plugins/skills/` directory. Each skill should have a `SKILL.md` file that extends Claude's capabilities.
 
 ### Hooks
-Configure event handlers in `hooks/hooks.json` to respond to Claude Code events like tool calls or user interactions.
+Configure event handlers in `plugins/hooks/hooks.json` to respond to Claude Code events like tool calls or user interactions.
 
 ### MCP Servers
 This plugin includes standard MCP (Model Context Protocol) servers configured in `.mcp.json`:
@@ -102,7 +103,7 @@ To use this plugin with Claude Code:
 
 ### Plugin Settings
 
-Edit `.claude-plugin/plugin.json` to customize:
+Edit `plugins/.claude-plugin/plugin.json` to customize:
 - Plugin name and version
 - Author information
 - Description and keywords

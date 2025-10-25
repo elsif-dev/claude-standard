@@ -10,16 +10,17 @@ This is a Claude Code plugin repository that provides standardized configuration
 
 ```
 claude-standard/
-├── .claude-plugin/
-│   └── plugin.json          # Plugin metadata (name, version, author)
-├── commands/git/
-│   └── commit.md           # /git:commit slash command
-├── agents/
-│   ├── quality-orchestrator.md        # Coordinates quality workflows
-│   ├── claude-code-quality-runner.md  # Reviews config files
-│   └── claude-code-quality-resolver.md # Fixes config issues
-├── skills/                  # (Empty - for future agent skills)
-├── hooks/                   # (Empty - for event handlers)
+├── plugins/
+│   ├── .claude-plugin/
+│   │   └── plugin.json          # Plugin metadata (name, version, author)
+│   ├── commands/git/
+│   │   └── commit.md           # /git:commit slash command
+│   ├── agents/
+│   │   ├── quality-orchestrator.md        # Coordinates quality workflows
+│   │   ├── claude-code-quality-runner.md  # Reviews config files
+│   │   └── claude-code-quality-resolver.md # Fixes config issues
+│   ├── skills/                  # (Empty - for future agent skills)
+│   └── hooks/                   # (Empty - for event handlers)
 └── .mcp.json               # MCP server configurations
 ```
 
@@ -101,7 +102,7 @@ The quality runner enforces consistent use of these keywords across all configur
 
 ### Making Changes to Configuration Files
 
-When modifying files in `.claude/`, `agents/`, `commands/`, or `skills/`:
+When modifying files in `.claude/`, `plugins/agents/`, `plugins/commands/`, or `plugins/skills/`:
 1. Changes are automatically reviewed before commits via `/git:commit`
 2. Quality runner identifies security, compliance, and permission issues
 3. Quality resolver applies fixes automatically

@@ -103,24 +103,24 @@ The quality runner enforces consistent use of these keywords across all configur
 ### Making Changes to Configuration Files
 
 When modifying files in `.claude/`, `plugins/agents/`, `plugins/commands/`, or `plugins/skills/`:
-1. Changes are automatically reviewed before commits via `/git:commit`
-2. Quality runner identifies security, compliance, and permission issues
-3. Quality resolver applies fixes automatically
-4. Verification runs confirm issues are resolved
-5. Process iterates up to 5 times until all checks pass
+1. Changes WILL BE automatically reviewed before commits via `/git:commit`
+2. Quality runner WILL identify security, compliance, and permission issues
+3. Quality resolver WILL apply fixes automatically
+4. Verification runs WILL confirm issues are resolved
+5. Process WILL iterate up to 5 times until all checks pass
 
 ### Adding New Agents
 
-New agents should:
-- Include YAML frontmatter with `name`, `description`, `tools`, and `model` fields
-- Use RFC 2119 keywords for requirements (MUST, SHOULD, MAY)
-- Request only minimum necessary tools
-- Include `*-runner.md` suffix for analysis agents (read-only)
-- Include `*-resolver.md` suffix for remediation agents
+New agents MUST include the following:
+- MUST include YAML frontmatter with `name`, `description`, `tools`, and `model` fields
+- MUST use RFC 2119 keywords for requirements (MUST, SHOULD, MAY)
+- MUST request only minimum necessary tools
+- SHOULD include `*-runner.md` suffix for analysis agents (read-only)
+- SHOULD include `*-resolver.md` suffix for remediation agents
 
 ### Security Principles
 
-- **Scope bash commands**: Use `Bash(git *:*)` instead of `Bash(*:*)`
-- **Minimize permissions**: Only grant tools actually needed
-- **Path restrictions**: Limit file operations to specific directories
-- **No credential commits**: Quality checks warn about .env, credentials.json, etc.
+- **Scope bash commands**: You MUST use `Bash(git *:*)` instead of `Bash(*:*)`
+- **Minimize permissions**: You MUST only grant tools actually needed
+- **Path restrictions**: You SHOULD limit file operations to specific directories
+- **No credential commits**: Quality checks WILL warn about .env, credentials.json, etc.

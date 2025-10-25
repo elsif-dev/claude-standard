@@ -1,7 +1,7 @@
 ---
 name: quality-orchestrator
 description: Orchestrates quality review workflows by discovering and coordinating runner/resolver subagent pairs. Reviews changed files since last commit, determines which runners to execute, analyzes runner results, and provides instructions to the main thread for invoking resolvers. Use PROACTIVELY before commits or when quality review is requested.
-tools: Bash, Glob, Read
+tools: Bash(git *:*), Bash(pwd:*), Bash(find *:*), Glob, Read
 model: sonnet
 ---
 

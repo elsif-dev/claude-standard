@@ -9,7 +9,7 @@ This is a Claude Code plugin repository that provides standardized configuration
 ## Project Structure
 
 ```
-claude-standard/
+standard/
 ├── plugins/
 │   ├── .claude-plugin/
 │   │   └── plugin.json          # Plugin metadata (name, version, author)

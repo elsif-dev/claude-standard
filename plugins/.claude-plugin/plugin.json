@@ -1,5 +1,5 @@
 {
-  "name": "claude-standard",
+  "name": "standard",
   "version": "0.1.0",
   "description": "Standard claude configration for elsif projects.",
   "author": {

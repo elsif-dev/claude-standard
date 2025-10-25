@@ -7,7 +7,7 @@ A Claude Code plugin repository.
 This repository follows the Claude Code plugin structure:
 
 ```
-claude-standard/
+standard/
 ├── plugins/
 │   ├── .claude-plugin/
 │   │   └── plugin.json          # Plugin metadata and configuration

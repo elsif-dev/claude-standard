@@ -10,7 +10,7 @@
   },
   "plugins": [
     {
-      "name": "claude-standard",
+      "name": "standard",
       "source": "./plugins",
       "description": "Standard Claude configuration for elsif projects with quality assurance workflows, git commit automation, and MCP server integrations",
       "version": "0.1.0",

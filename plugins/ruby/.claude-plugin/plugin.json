@@ -1,0 +1,21 @@
+{
+  "name": "ruby",
+  "version": "0.1.0",
+  "description": "Ruby development tooling and best practices for Claude Code",
+  "author": {
+    "name": "fugufish"
+  },
+  "keywords": [
+    "ruby",
+    "rails",
+    "rspec",
+    "rubocop",
+    "bundler",
+    "testing",
+    "elsif"
+  ],
+  "homepage": "https://github.com/elsif/claude-standard",
+  "repository": "https://github.com/elsif/claude-standard.git",
+  "license": "MIT",
+  "mcpServers": "./.mcp.json"
+}

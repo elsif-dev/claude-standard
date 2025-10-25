@@ -13,6 +13,11 @@
       "name": "standard",
       "source": "./plugins/standard",
       "description": "Standard Claude Code configurations for elsif projects"
+    },
+    {
+      "name": "ruby",
+      "source": "./plugins/ruby",
+      "description": "Ruby development tooling and best practices for Claude Code"
     }
   ]
 }

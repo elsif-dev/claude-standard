@@ -1,0 +1,11 @@
+{
+  "name": "claude-standard",
+  "version": "0.1.0",
+  "description": "Standard claude configration for elsif projects.",
+  "author": {
+    "name": "fugufish"
+  },
+  "keywords": [
+    "plugin"
+  ]
+}

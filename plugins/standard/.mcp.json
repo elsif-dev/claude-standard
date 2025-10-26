@@ -13,7 +13,9 @@
       "command": "npx",
       "args": [
         "-y",
-        "@modelcontextprotocol/server-git"
+        "mcp-server-git",
+        "--repository",
+        "${CLAUDE_PLUGIN_ROOT}"
       ],
       "description": "Git repository operations and version control"
     },

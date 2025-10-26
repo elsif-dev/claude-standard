@@ -9,19 +9,23 @@ This is a Claude Code plugin repository that provides standardized configuration
 ## Project Structure
 
 ```
-standard/
+claude/
 ├── plugins/
-│   ├── .claude-plugin/
-│   │   └── plugin.json          # Plugin metadata (name, version, author)
-│   ├── commands/git/
-│   │   └── commit.md           # /git:commit slash command
-│   ├── agents/
-│   │   ├── quality-orchestrator.md        # Coordinates quality workflows
-│   │   ├── claude-code-quality-runner.md  # Reviews config files
-│   │   └── claude-code-quality-resolver.md # Fixes config issues
-│   ├── skills/                  # (Empty - for future agent skills)
-│   └── hooks/                   # (Empty - for event handlers)
-└── .mcp.json               # MCP server configurations
+│   ├── standard/                           # Standard plugin with quality tools
+│   │   ├── commands/git/
+│   │   │   └── commit.md                  # /git:commit slash command
+│   │   ├── agents/
+│   │   │   ├── quality-orchestrator.md        # Coordinates quality workflows
+│   │   │   ├── claude-code-quality-runner.md  # Reviews config files
+│   │   │   └── claude-code-quality-resolver.md # Fixes config issues
+│   │   ├── skills/                        # (Empty - for future agent skills)
+│   │   ├── hooks/                         # (Empty - for event handlers)
+│   │   └── .mcp.json                      # MCP servers for standard plugin
+│   └── ruby/                               # Ruby plugin with RuboCop tools
+│       ├── agents/
+│       │   ├── rubocop-runner.md          # Analyzes Ruby code with RuboCop
+│       │   └── rubocop-resolver.md        # Fixes RuboCop violations
+│       └── skills/                        # (Empty - for future Ruby skills)
 ```
 
 ## Key Components
@@ -63,13 +67,15 @@ This plugin implements an automated quality review system with three specialized
 
 ### MCP Servers
 
-Pre-configured MCP servers in `.mcp.json`:
+Each plugin MAY configure its own MCP servers in its `.mcp.json` file. The standard plugin includes pre-configured MCP servers in `plugins/standard/.mcp.json`:
 - **filesystem**: File system operations with read/write access (scoped to `${CLAUDE_PLUGIN_ROOT}`)
 - **git**: Git repository operations and version control
 - **sequential-thinking**: Enhanced reasoning and step-by-step problem solving
 - **time**: Current time and date information
 
 All servers use `npx -y` to auto-install and run. No additional environment variables required.
+
+Plugins that do NOT require MCP servers MAY include an empty `.mcp.json` file with `{"mcpServers": {}}` to maintain consistent structure across plugins.
 
 ## Architecture Patterns
 
@@ -102,7 +108,7 @@ The quality runner enforces consistent use of these keywords across all configur
 
 ### Making Changes to Configuration Files
 
-When modifying files in `.claude/`, `plugins/agents/`, `plugins/commands/`, or `plugins/skills/`:
+When modifying files in `.claude/`, `plugins/*/agents/`, `plugins/*/commands/`, or `plugins/*/skills/`:
 1. Changes WILL BE automatically reviewed before commits via `/git:commit`
 2. Quality runner WILL identify security, compliance, and permission issues
 3. Quality resolver WILL apply fixes automatically
